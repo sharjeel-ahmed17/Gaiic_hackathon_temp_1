@@ -5,10 +5,10 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-
+index.txt
 # testing
 /coverage
-
+scripts/importData.js
 # next.js
 /.next/
 /out/
