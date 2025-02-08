@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { addToCart } from "./actions/actions";
 import { Button } from "@/components/ui/button";
+import Swal from "sweetalert2";
+
 
 const Home = () => {
   const [products, setProducts] = useState<Products[]>([]);
@@ -34,9 +36,18 @@ const Home = () => {
 const handleAddToCart = (e: React.MouseEvent,product : Products)=>{
   e.preventDefault();
   addToCart(product)
-  alert("add to cart successfully")
-  console.log("add to cart successfully");
+  // alert("add to cart successfully")
+  // console.log("add to cart successfully");
+
+ Swal.fire({
+  position : "center",
+  icon: "success",
+  title: `${product.name} is Added Successfully`,
+  showConfirmButton : false,
+  timer: 1000,
   
+ })
+
 
 
 }
