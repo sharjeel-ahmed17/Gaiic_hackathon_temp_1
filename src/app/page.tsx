@@ -5,6 +5,8 @@ import { client } from "@/sanity/lib/client";
 import { allProducts } from "@/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
+import { addToCart } from "./actions/actions";
+import { Button } from "@/components/ui/button";
 
 const Home = () => {
   const [products, setProducts] = useState<Products[]>([]);
@@ -29,7 +31,15 @@ const Home = () => {
       </div>
     );
   }
+const handleAddToCart = (e: React.MouseEvent,product : Products)=>{
+  e.preventDefault();
+  addToCart(product)
+  alert("add to cart successfully")
+  console.log("add to cart successfully");
+  
 
+
+}
   return (
     <div>
       
@@ -44,6 +54,8 @@ const Home = () => {
             <Link href={`/products/${products.slug}`} >go to details page</Link>
             <h3>{products.name}</h3>
             <Image src={products.imageUrl} width={200} height={200} alt={products.name}/>
+
+            <Button onClick={(e)=>handleAddToCart(e, products)}>add to cart</Button>
 
           </div>
         )

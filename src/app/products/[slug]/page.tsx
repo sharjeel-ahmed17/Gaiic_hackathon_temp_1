@@ -2,6 +2,7 @@ import React from "react";
 import { Products } from "../../../../types/products";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
+import Image from "next/image";
 
 interface ProductPageProps {
   params: { slug: string }; 
@@ -32,6 +33,15 @@ const ProductDetailsPage = async ({ params }: ProductPageProps) => {
       </h2>
       <div>
         <h2>{product?.name ?? "Product not found"}</h2>
+        {product?.imageUrl && (
+  <Image
+    src={product.imageUrl}
+    width={200}
+    height={200}
+    alt={product.name}
+  />
+)}
+
       </div>
     </div>
   );

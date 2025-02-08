@@ -20,6 +20,11 @@ export default defineType({
         }
         },
         {
+            name: 'inventory',
+            title: 'inventory',
+            type: 'number',
+            },
+        {
         name: 'price',
         title: 'Price',
         type: 'number',
