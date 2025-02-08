@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Products } from "../../types/products";
+import { Products } from "@/types/products";
 import { client } from "@/sanity/lib/client";
 import { allProducts } from "@/lib/queries";
 import Image from "next/image";
 import Link from "next/link";
-import { addToCart } from "./actions/actions";
+import { addToCart } from "@/actions/actions";
 import { Button } from "@/components/ui/button";
 import Swal from "sweetalert2";
 // import { useRouter } from "next/navigation";

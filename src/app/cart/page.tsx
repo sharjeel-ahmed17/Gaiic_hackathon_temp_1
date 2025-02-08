@@ -1,16 +1,18 @@
 "use client";
 
-import { Products } from "../../../types/products";
+import { Products } from "@/types/products";
 import { useState, useEffect } from "react";
 import {
   getCartItems,
   removeFromCart,
   updateCartQuantity,
-} from "../actions/actions";
+} from "@/actions/actions";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 const Cart = () => {
+  const router  = useRouter();
   const [cartItems, setCartItems] = useState<Products[]>([]);
 
   useEffect(() => {
@@ -77,6 +79,7 @@ const Cart = () => {
         setCartItems([]);
       }
     });
+    router.push("/checkout")
   };
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
