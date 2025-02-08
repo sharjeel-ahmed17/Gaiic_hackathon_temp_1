@@ -4,6 +4,7 @@ import { Products } from "../../types/products";
 import { client } from "@/sanity/lib/client";
 import { allProducts } from "@/lib/queries";
 import Image from "next/image";
+import Link from "next/link";
 
 const Home = () => {
   const [products, setProducts] = useState<Products[]>([]);
@@ -36,8 +37,11 @@ const Home = () => {
      <h1>Home</h1>
      {
       products.map((products)=>{
+        // console.log('error>>>',products.slug);
+        
         return(
           <div key={products._id}>
+            <Link href={`/products/${products.slug}`} >go to details page</Link>
             <h3>{products.name}</h3>
             <Image src={products.imageUrl} width={200} height={200} alt={products.name}/>
 

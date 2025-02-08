@@ -3,6 +3,7 @@ import { groq } from "next-sanity";
 export const allProducts =  groq`*[_type == "products"]{
   _id,
   name,
+  "slug": slug.current,
   description,
   price,
   "imageUrl" : image.asset->url,
