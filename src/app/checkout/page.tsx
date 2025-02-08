@@ -18,8 +18,20 @@ const Checkout = () => {
         zipCode  : "",
         phone : "",
         email : "",
-        firstName : "",
+        
     })
+    const [formErrors , setFormErrors] = useState({
+        firstName : false,
+        lastName : false,
+        addressName : false,
+        city : false,
+        zipCode  : false,
+        phone : false,
+        email : false,
+        
+    })
+
+    
   return (
     <div>Checkout</div>
   )
