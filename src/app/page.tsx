@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { Products } from "../../types/products";
 import { client } from "@/sanity/lib/client";
 import { allProducts } from "@/lib/queries";
-import { ProductCard } from "@/components/products/ProductCard";
+import Image from "next/image";
+
 const Home = () => {
   const [products, setProducts] = useState<Products[]>([]);
 
@@ -30,17 +31,20 @@ const Home = () => {
 
   return (
     <div>
-      {/* {products.length} */}
-      <h1>home</h1>
-      <ProductCard/>
-      {/* {products.map((products) => {
-        // console.log("image url >>>", products.imageUrl);
+      
+     {/* {products.length} */}
+     <h1>Home</h1>
+     {
+      products.map((products)=>{
+        return(
+          <div key={products._id}>
+            <h3>{products.name}</h3>
+            <Image src={products.imageUrl} width={200} height={200} alt={products.name}/>
 
-        return <div key={products._id}>
-          <h3>{products.name}</h3>
-     <Image src={products.imageUrl} width={200} height={200} alt={products.name}/>
-        </div>;
-      })} */}
+          </div>
+        )
+      })
+     }
     </div>
   );
 };
