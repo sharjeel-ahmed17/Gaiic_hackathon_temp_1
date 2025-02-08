@@ -1,5 +1,5 @@
 import React from "react";
-import { Products } from "../../../../types/products";
+import { Products } from "@/types/products";
 import { client } from "@/sanity/lib/client";
 import { groq } from "next-sanity";
 import Image from "next/image";

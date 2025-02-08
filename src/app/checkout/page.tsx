@@ -5,7 +5,7 @@ import { Products } from "@/types/products";
 import { getCartItems } from "@/actions/actions";
 import Swal from "sweetalert2";
 import { client } from "@/sanity/lib/client";
-import order from "@/sanity/schemaTypes/order";
+
 
 const Checkout = () => {
   const [cartItems, setCartItems] = useState<Products[]>([]);
