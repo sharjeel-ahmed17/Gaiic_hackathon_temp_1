@@ -8,9 +8,11 @@ import Link from "next/link";
 import { addToCart } from "./actions/actions";
 import { Button } from "@/components/ui/button";
 import Swal from "sweetalert2";
+// import { useRouter } from "next/navigation";
 
 
 const Home = () => {
+  // const router = useRouter();
   const [products, setProducts] = useState<Products[]>([]);
 
   const getAllProducts = async () => {
@@ -47,7 +49,7 @@ const handleAddToCart = (e: React.MouseEvent,product : Products)=>{
   timer: 1000,
   
  })
-
+// router.push("/cart")
 
 
 }
