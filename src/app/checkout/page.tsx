@@ -106,7 +106,7 @@ const Checkout = () => {
     try {
       await client.create(orderData);
       localStorage.removeItem("appliedDiscount")
-console.log("order created>>>>>>");
+// console.log("order created>>>>>>");
 
     } catch (error) {
 console.log("error crating order" , error);

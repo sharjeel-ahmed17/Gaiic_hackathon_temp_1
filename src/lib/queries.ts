@@ -11,7 +11,8 @@ export const allProducts =  groq`*[_type == "products"]{
   discountPercent,
   "isNew": new,
   colors,
-  sizes
+  sizes,
+  inventory
 }`
 
 export const fourProducts =  groq`*[_type == "products"][0..3]{
