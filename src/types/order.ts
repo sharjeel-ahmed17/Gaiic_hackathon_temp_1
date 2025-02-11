@@ -11,5 +11,5 @@ export interface Order {
     discount: number;
     orderDate: string;
     status: string | null;
-    cartItems: { productName: string; image: string }[];
+    cartItems: { name: string; imageUrl: string }[];
   }

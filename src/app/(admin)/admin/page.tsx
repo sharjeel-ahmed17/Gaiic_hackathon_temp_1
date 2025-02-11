@@ -1,13 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import { client } from "@/sanity/lib/client";
-import Image from "next/image";
+// import Image from "next/image";
 import Swal from "sweetalert2";
-import ProtectedRoute from "@/components/admin/protected/Protected";
+// import ProtectedRoute from "@/components/admin/protected/Protected";
 import { Order } from "@/types/order";
 import { allOrders } from "@/lib/queries";
-import { set } from "sanity";
-import Header from "@/components/admin/header/Header";
+
+
 const Admin = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [selectedOrderId, setselectedOrderId] = useState<string | null>(null);
@@ -102,6 +102,7 @@ const Admin = () => {
           ))}
         </div>
       </nav>
+      {/* order table */}
       <div>
         <h2>order</h2>
         <div>
@@ -117,7 +118,7 @@ const Admin = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            {orders.map((order) => (
+            {filterOrder.map((order) => (
                   <div key={order._id}>
                     <tr
                       className="cursor-pointer hover:bg-red-100 transition-all "
@@ -159,14 +160,25 @@ const Admin = () => {
                           <p><strong>Email:</strong> {order.email}</p>
                           <p><strong>City:</strong> {order.city}</p>
                           <ul>
-                            {order.cartItems.map((item, index) => (
+                            {/* {order.cartItems.map((item, index) => (
                               <li key={`${order._id}-${index}`} className="flex items-center gap-2">
                                 {item.productName}
                                 {item.image && (
                                   <Image src={item.image} width={40} height={40} alt={item.productName} />
                                 )}
                               </li>
-                            ))}
+                            ))} */}
+                            {
+                                order.cartItems.map((item)=>{
+                                    // console.log('>>>>',item);
+                                    
+                                    return (
+                                        <>
+                                    he
+                                        </>
+                                    )
+                                })
+                            }
                           </ul>
                         </td>
                       </tr>
