@@ -1,16 +1,15 @@
-"use client"
+"use client";
 import useAdminHooks from "@/hooks/useAdminHooks";
 
 const Admin = () => {
-  const { 
-  
+  const {
     selectedOrderId,
     filter,
     setFilter,
     filterOrder,
     toggleOrderDetails,
     handleDelete,
-    handleStatusChange 
+    handleStatusChange,
   } = useAdminHooks();
 
   return (
@@ -20,18 +19,19 @@ const Admin = () => {
         <h2 className="text-2xl font-bold">Admin Dashboard</h2>
         <div className="flex space-x-4">
           {["all", "pending", "dispatch", "success"].map((status) => {
-
-            return(
+            return (
               <button
                 key={status}
                 className={`px-4 py-2 rounded-lg transition-all ${
-                  filter === status ? "bg-white text-red-600 font-bold" : "text-white"
+                  filter === status
+                    ? "bg-white text-red-600 font-bold"
+                    : "text-white"
                 }`}
                 onClick={() => setFilter(status)}
               >
                 {status.charAt(0).toUpperCase() + status.slice(1)}
               </button>
-            )
+            );
           })}
         </div>
       </nav>
@@ -60,14 +60,18 @@ const Admin = () => {
                     onClick={() => toggleOrderDetails(order._id)}
                   >
                     <td>{order._id}</td>
-                    <td>{order.firstName} {order.lastName}</td>
+                    <td>
+                      {order.firstName} {order.lastName}
+                    </td>
                     <td>{order.address}</td>
                     <td>{new Date(order.orderDate).toLocaleDateString()}</td>
                     <td>${order.total}</td>
                     <td>
                       <select
                         value={order.status || ""}
-                        onChange={(e) => handleStatusChange(order._id, e.target.value)}
+                        onChange={(e) =>
+                          handleStatusChange(order._id, e.target.value)
+                        }
                         className="bg-gray-100 p-1 rounded"
                       >
                         <option value="pending">Pending</option>
@@ -89,21 +93,38 @@ const Admin = () => {
                   </tr>
                   {selectedOrderId === order._id && (
                     <tr>
-                      <td colSpan={7} className="bg-gray-50 p-4 transition-all animate-fadeIn">
+                      <td
+                        colSpan={7}
+                        className="bg-gray-50 p-4 transition-all animate-fadeIn"
+                      >
                         <h3 className="font-bold">Order Details</h3>
-                        <p><strong>Phone:</strong> {order.phone}</p>
-                        <p><strong>Email:</strong> {order.email}</p>
-                        <p><strong>City:</strong> {order.city}</p>
+                        <p>
+                          <strong>Phone:</strong> {order.phone}
+                        </p>
+                        <p>
+                          <strong>Email:</strong> {order.email}
+                        </p>
+                        <p>
+                          <strong>City:</strong> {order.city}
+                        </p>
                         <ul>
                           {order.cartItems.map((item, index) => {
-                            return(
-                              <li key={`${order._id}-${index}`} className="flex items-center gap-2">
+                            return (
+                              <li
+                                key={`${order._id}-${index}`}
+                                className="flex items-center gap-2"
+                              >
                                 {item.name}
                                 {item.imageUrl && (
-                                  <img src={item.imageUrl} width={40} height={40} alt={item.name} />
+                                  <img
+                                    src={item.imageUrl}
+                                    width={40}
+                                    height={40}
+                                    alt={item.name}
+                                  />
                                 )}
                               </li>
-                            )
+                            );
                           })}
                         </ul>
                       </td>

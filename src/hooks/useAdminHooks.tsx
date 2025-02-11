@@ -26,7 +26,7 @@ const useAdminHooks = () => {
   const filterOrder =
     filter === "all"
       ? orders
-      : orders.filter((order) => order.status === "filter");
+      : orders.filter((order) => order.status === filter);
 
   const toggleOrderDetails = (orderId: string) => {
     setselectedOrderId((prev) => (prev === orderId ? null : orderId));
