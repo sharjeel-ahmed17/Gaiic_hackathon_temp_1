@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/common/header/Header";
+import {ClerkProvider} from "@clerk/nextjs"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,15 +26,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+  
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+
+<ClerkProvider>
+
         <div className="max-w-[1440px] mx-auto">
           <Header />
           {children}
         </div>
+</ClerkProvider>
       </body>
     </html>
+ 
   );
 }

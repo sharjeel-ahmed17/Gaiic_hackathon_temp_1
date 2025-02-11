@@ -10,7 +10,7 @@ const ProtectedRoute = ({children} : {children : React.ReactNode}) => {
     useEffect(()=>{
         const isLoggedIn = localStorage.getItem("isLoggedIn");
         if(!isLoggedIn){
-            router.push("/login")
+            router.push("/")
         }
     },[router])
   return <>
