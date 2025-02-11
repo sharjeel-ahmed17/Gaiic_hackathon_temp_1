@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
-
+import AuthGuard from "@/components/cart/authGaurd/AuthGuard";
 const Cart = () => {
   const router  = useRouter();
   const [cartItems, setCartItems] = useState<Products[]>([]);
@@ -82,6 +82,8 @@ const Cart = () => {
     router.push("/checkout")
   };
   return (
+
+    <AuthGuard>
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
       {cartItems.length === 0 ? (
@@ -141,6 +143,7 @@ const Cart = () => {
         </div>
       )}
     </div>
+    </AuthGuard>
   );
 };
 
