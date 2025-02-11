@@ -14,7 +14,7 @@ export const allProducts =  groq`*[_type == "products"]{
   sizes,
   inventory
 }`
-
+export const getAllcategories = groq`array::unique(*[_type == "products"].category)`
 export const fourProducts =  groq`*[_type == "products"][0..3]{
 
  _id,
