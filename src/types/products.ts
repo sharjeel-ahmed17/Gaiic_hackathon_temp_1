@@ -2,10 +2,7 @@ export interface Products {
   _id: string;
   _type: "products";    
   name: string;
-  slug: {  
-    _type: "slug";  
-    current: string; 
-  };
+  slug: string ;
   inventory : number ;
   description: string;
   price: number;

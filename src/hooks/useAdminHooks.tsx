@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 import { client } from "@/sanity/lib/client";
 import { Order } from "@/types/order";
 import { allOrders } from "@/lib/queries";
-
+// import { useRouter } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 const useAdminHooks = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [selectedOrderId, setselectedOrderId] = useState<string | null>(null);
@@ -78,6 +79,17 @@ const useAdminHooks = () => {
       );
     }
   };
+
+
+  // const router = useRouter();
+  // const handleLogout = ()=>{
+  //   localStorage.removeItem('isLoggedIn');
+  //   router.push('/')
+    
+  // }
+
+
+  
   return  {
     orders,
     selectedOrderId,
@@ -87,6 +99,7 @@ const useAdminHooks = () => {
     toggleOrderDetails,
     handleDelete,
     handleStatusChange,
+    // handleLogout
   };
 };
 

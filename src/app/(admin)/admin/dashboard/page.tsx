@@ -1,6 +1,11 @@
 "use client";
 import useAdminHooks from "@/hooks/useAdminHooks";
-import ProtectedRoute from "@/components/admin/protected/Protected";
+// import ProtectedRoute from "@/components/admin/protected/Protected";
+import { SignedIn, SignedOut, SignOutButton, useUser } from "@clerk/nextjs";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
 const Admin = () => {
   const {
     selectedOrderId,
@@ -10,12 +15,28 @@ const Admin = () => {
     toggleOrderDetails,
     handleDelete,
     handleStatusChange,
+    // handleLogout
   } = useAdminHooks();
+  const { user, isSignedIn  , isLoaded} = useUser();
+  const router = useRouter();
+  const [isUserLoaded, setIsUserLoaded] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      if (
+        user?.primaryEmailAddress?.emailAddress !==
+        process.env.NEXT_PUBLIC_ADMIN_EMAIL
+      ) {
+        router.replace("/");
+      }
+    }
+  }, [isLoaded, isSignedIn, user, router]);
+
+  if (!isLoaded) return <p>Loading...</p>;
+  if (!isSignedIn || user?.primaryEmailAddress?.emailAddress !== process.env.NEXT_PUBLIC_ADMIN_EMAIL) {
+    return null; // Prevent further rendering
+  }
   return (
-    <ProtectedRoute>
-
-    
     <div>
       {/* header  */}
       <nav className="bg-red-600 text-white p-4 shadow-lg flex justify-between">
@@ -37,6 +58,11 @@ const Admin = () => {
             );
           })}
         </div>
+        <button>
+          <SignedIn>
+            <SignOutButton />
+          </SignedIn>
+        </button>
       </nav>
 
       {/* order table */}
@@ -119,7 +145,7 @@ const Admin = () => {
                               >
                                 {item.name}
                                 {item.imageUrl && (
-                                  <img
+                                  <Image
                                     src={item.imageUrl}
                                     width={40}
                                     height={40}
@@ -140,7 +166,6 @@ const Admin = () => {
         </div>
       </div>
     </div>
-    </ProtectedRoute>
   );
 };
 

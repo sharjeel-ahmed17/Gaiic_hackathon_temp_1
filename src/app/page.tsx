@@ -191,7 +191,7 @@ const Home = () => {
       
       products.map((product) => (
         <div key={product._id}>
-          <Link href={`/products/${product.slug.current}`}>Go to details page</Link>
+          <Link href={`/products/${product.slug}`}>Go to details page</Link>
           <h3>{product.name}</h3>
           <Image src={product.imageUrl} width={200} height={200} alt={product.name} />
           <Button onClick={(e) => handleAddToCart(e, product)}>Add to cart</Button>

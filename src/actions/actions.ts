@@ -1,18 +1,11 @@
-
-
 import { Products } from "@/types/products";
-
-
 interface CartProduct extends Products {
   inventory: number;
 }
-
-
 const getCart = (): CartProduct[] => {
   const cartData = localStorage.getItem("cart");
   return cartData ? JSON.parse(cartData) : [];
 };
-
 
 export const addToCart = (product: Products) => {
   const cart: CartProduct[] = getCart();
@@ -38,15 +31,14 @@ export const removeFromCart = (productId: string) => {
 
 export const updateCartQuantity = (productId: string, quantity: number) => {
   const cart: CartProduct[] = getCart();
-  const productIndex = cart.findIndex((item) => item._id === productId); // ✅ Fix condition
-
+  const productIndex = cart.findIndex((item) => item._id === productId); 
   if (productIndex > -1) {
     cart[productIndex].inventory = quantity;
-    localStorage.setItem("cart", JSON.stringify(cart)); // ✅ Update localStorage
+    localStorage.setItem("cart", JSON.stringify(cart)); 
   }
 };
 
-// ✅ Get Cart Items
+
 export const getCartItems = (): CartProduct[] => {
   return getCart();
 };
