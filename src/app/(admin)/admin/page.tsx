@@ -1,7 +1,7 @@
 "use client";
-
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
@@ -12,11 +12,15 @@ export default function AdminLogin() {
     e.preventDefault();
 
     // Hardcoded credentials for admin (replace with secure method later)
-    if (email === "sharjeelalibari3@gmail.com" && password === "shah1234") {
+    if (email === process.env.NEXT_PUBLIC_ADMIN_EMAIL && password === process.env.NEXT_PUBLIC_ADMIN_PASS) {
       localStorage.setItem("isLoggedIn", "true"); // Store login status
       router.push("admin/dashboard"); // Redirect to dashboard
     } else {
-      alert("Invalid email or password"); // Error alert
+    Swal.fire({
+      title: "Error",
+      text: "Invalid credentials",
+      icon: "error",
+    })
     }
   };
 
