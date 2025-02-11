@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
 
-const Protected = ({children} : {children : React.ReactNode}) => {
+const ProtectedRoute = ({children} : {children : React.ReactNode}) => {
 
     const router = useRouter();
 
@@ -18,4 +18,4 @@ const Protected = ({children} : {children : React.ReactNode}) => {
   </>
 }
 
-export default Protected
+export default ProtectedRoute

@@ -42,3 +42,24 @@ _id,
  colors,
  sizes
 }`
+
+
+// orders data
+export const allOrders =  groq`*[_type == "order"]{
+          _id,
+          firstName,
+          lastName,
+          phone,
+          email,
+          address,
+          city,
+          zipCode,
+          total,
+          discount,
+          orderDate,
+          status,
+          cartItems[]->{
+            productName,
+            "imageUrl" : image.asset->url
+          }
+        }`
